@@ -5,12 +5,12 @@
     <parent>
         <groupId>cukes</groupId>
         <artifactId>cucumber-as3-parent</artifactId>
-        <version>0.1-SNAPSHOT</version>
+        <version>0.1</version>
     </parent>
 
 	<groupId>cukes</groupId>
 	<artifactId>cucumber-as3-bundle</artifactId>
-	<version>0.1-SNAPSHOT</version>
+	<version>0.1</version>
 	<packaging>pom</packaging>
 
 	<build>
