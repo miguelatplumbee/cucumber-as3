@@ -13,11 +13,11 @@
 	<version>0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>cukes4as3-examples</name>
+	<name>cukes4as3-examples-parent</name>
 
 	<modules>
-        <module>cucumber-as3-calculator</module>
-        <module>cucumber-as3-parsley</module>
+        <module>cucumber-as3-examples-calculator</module>
+        <module>cucumber-as3-examples-parsley</module>
     </modules>
 	
 </project>

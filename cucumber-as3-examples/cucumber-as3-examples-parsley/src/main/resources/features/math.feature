@@ -1,4 +1,4 @@
-opeFeature: How to do math
+Feature: How to do math
 
     As a hopeless mathematician
     I want to be able to do some math

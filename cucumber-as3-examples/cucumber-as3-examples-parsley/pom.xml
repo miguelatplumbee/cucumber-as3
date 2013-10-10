@@ -13,7 +13,7 @@
     <version>0.1-SNAPSHOT</version>
     <packaging>swf</packaging>
 
-    <name>cukes4as3-examples-calculator</name>
+    <name>cukes4as3-examples-parsley</name>
 
     <build>
         <sourceDirectory>src/main/flex</sourceDirectory>
