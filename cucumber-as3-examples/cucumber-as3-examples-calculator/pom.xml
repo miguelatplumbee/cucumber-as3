@@ -4,12 +4,12 @@
 
     <parent>
         <groupId>cukes</groupId>
-        <artifactId>cukes4as3-examples</artifactId>
+        <artifactId>cucumber-as3-examples-parent</artifactId>
         <version>0.1-SNAPSHOT</version>
     </parent>
 
     <groupId>cukes</groupId>
-    <artifactId>cukes4as3-examples-calculator</artifactId>
+    <artifactId>cucumber-as3-examples-calculator</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>swf</packaging>
     

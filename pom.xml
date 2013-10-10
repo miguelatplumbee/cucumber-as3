@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>cukes</groupId>
-	<artifactId>cukes4as3-parent</artifactId>
+	<artifactId>cucumber-as3-parent</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
@@ -31,6 +31,29 @@
         <url>scm:git:git@github.com:miguelatplumbee/cucumber-as3.git</url>
         <developerConnection>scm:git:git@github.com:miguelatplumbee/cucumber-as3.git</developerConnection>
     </scm>
+
+    <distributionManagement>
+         <repository>
+                 <id>s3account</id>
+                 <name>S3 Release repo</name>
+                 <url>s3://plumbee-maven-repo/mainrepo</url>
+         </repository>
+         <snapshotRepository>
+                 <id>s3account</id>
+                 <name>S3 Snapshot repo</name>
+                 <url>s3://plumbee-maven-repo/mainrepo</url>
+         </snapshotRepository>
+    </distributionManagement>
+
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.springframework.build.aws</groupId>
+                <artifactId>org.springframework.build.aws.maven</artifactId>
+                <version>3.0.0.RELEASE</version>
+            </extension>
+        </extensions>
+    </build>
 
     <repositories>
         <repository>

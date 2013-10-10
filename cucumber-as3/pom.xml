@@ -4,12 +4,12 @@
 
     <parent>
         <groupId>cukes</groupId>
-        <artifactId>cukes4as3-parent</artifactId>
+        <artifactId>cucumber-as3-parent</artifactId>
         <version>0.1-SNAPSHOT</version>
     </parent>
 
 	<groupId>cukes</groupId>
-	<artifactId>cukes4as3</artifactId>
+	<artifactId>cucumber-as3</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<packaging>swc</packaging>
 
