@@ -13,8 +13,6 @@
 	<version>0.1-SNAPSHOT</version>
 	<packaging>swc</packaging>
 
-	<name>cukes4as3-lib</name>
-
 	<build>
 		<sourceDirectory>src/main/flex</sourceDirectory>
 		<testSourceDirectory>src/test/flex</testSourceDirectory>

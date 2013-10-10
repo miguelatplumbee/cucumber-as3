@@ -7,8 +7,6 @@
 	<version>0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>cucumber-as3-parent</name>
-
     <properties>
         <as3commons.bytecode.version>1.0</as3commons.bytecode.version>
         <dconsole.version>2.3</dconsole.version>

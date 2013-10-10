@@ -13,8 +13,6 @@
 	<version>0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>cukes4as3-merged</name>
-
 	<build>
 		<sourceDirectory>src/main/flex</sourceDirectory>
 
