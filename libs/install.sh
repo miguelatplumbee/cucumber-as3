@@ -1,0 +1,1 @@
+mvn install:install-file -DgroupId=com.furusystems -DartifactId=dconsole -Dpackaging=swc  -Dversion=2.3 -DgeneratePom=true -Dfile=DConsole2.3.swc

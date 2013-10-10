@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>cukes</groupId>
+        <artifactId>cukes4as3-examples</artifactId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+
+    <groupId>cukes</groupId>
+    <artifactId>cukes4as3-examples-calculator</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <packaging>swf</packaging>
+
+    <name>cukes4as3-examples-calculator</name>
+
+    <build>
+        <sourceDirectory>src/main/flex</sourceDirectory>
+        <outputDirectory>${project.build.directory}</outputDirectory>
+        <finalName>TestRunner</finalName>
+        <plugins>
+            <plugin>
+                <groupId>net.flexmojos.oss</groupId>
+                <artifactId>flexmojos-maven-plugin</artifactId>
+                <version>${flexmojos.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <sourceFile>TestRunner.as</sourceFile>
+                    <storepass>thisShouldnBeNeeded</storepass>
+                    <iKnowWhatImDoingPleaseBreakMyBuildIwontBlameFlexmojosForStopWorking>true</iKnowWhatImDoingPleaseBreakMyBuildIwontBlameFlexmojosForStopWorking>
+                    <testTimeout>200000</testTimeout>
+                    <compilerWarnings>
+                        <warn-no-constructor>false</warn-no-constructor>
+                    </compilerWarnings>
+                    <coverage>true</coverage>
+                    <coverageReportFormat>
+                        <param>xml</param>
+                        <param>html</param>
+                    </coverageReportFormat>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>exec-maven-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <executions>
+                    <execution>
+                        <id>cucumber-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>sh</executable>
+                            <workingDirectory>${project.build.directory}</workingDirectory>
+                            <arguments>
+                                <argument>${project.build.directory}/test-features.sh</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>cukes</groupId>
+            <artifactId>cukes4as3</artifactId>
+            <version>${project.version}</version>
+            <type>swc</type>
+        </dependency>
+
+    </dependencies>
+
+</project>

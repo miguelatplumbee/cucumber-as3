@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>cukes</groupId>
+	<artifactId>cukes4as3-parent</artifactId>
+	<version>0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>cucumber-as3-parent</name>
+
+    <properties>
+        <as3commons.bytecode.version>1.0</as3commons.bytecode.version>
+        <dconsole.version>2.3</dconsole.version>
+        <hamcrest.version>1.1</hamcrest.version>
+        <asmock.version>1.0</asmock.version>
+        <flex.sdk.version>4.6.b.23201</flex.sdk.version>
+        <flexunit.version>4.1.0</flexunit.version>
+        <flexmojos.version>5.1-beta-QP</flexmojos.version>
+        <parsley.version>2.4.1</parsley.version>
+        <spicelib.version>2.4.0</spicelib.version>
+    </properties>
+
+	<modules>
+        <module>cucumber-as3-lib</module>
+        <module>cucumber-as3</module>
+        <module>cucumber-as3-bundle</module>
+        <module>cucumber-as3-examples</module>
+    </modules>
+
+    <scm>
+        <connection>scm:git:ssh://git@github.com:miguelatplumbee/cucumber-as3.git</connection>
+        <url>scm:git:ssh://git@github.com:miguelatplumbee/cucumber-as3.git</url>
+        <developerConnection>scm:git:ssh://git@github.com:miguelatplumbee/cucumber-as3.git</developerConnection>
+    </scm>
+
+    <repositories>
+        <repository>
+            <id>flex-mojos-repository</id>
+            <url>http://repository.sonatype.org/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>adobe-open-source</id>
+            <url>http://opensource.adobe.com/svn/opensource/cairngorm3/maven-repository/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>as3commons</id>
+            <url>http://projects.yoolab.org/maven/content/repositories/releases/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>flex-mojos-plugin-repository</id>
+            <url>http://repository.sonatype.org/content/groups/flexgroup/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+	
+</project>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>cukes</groupId>
+        <artifactId>cukes4as3-parent</artifactId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+
+	<groupId>cukes</groupId>
+	<artifactId>cukes4as3</artifactId>
+	<version>0.1-SNAPSHOT</version>
+	<packaging>swc</packaging>
+
+	<name>cukes4as3</name>
+
+	<build>
+		<sourceDirectory>src/main/flex</sourceDirectory>
+		<testSourceDirectory>src/test/flex</testSourceDirectory>
+        <outputDirectory>${project.build.directory}</outputDirectory>
+        <finalName>TestRunner</finalName>
+
+		<plugins>			
+			<plugin>
+				<groupId>net.flexmojos.oss</groupId>
+				<artifactId>flexmojos-maven-plugin</artifactId>
+				<version>${flexmojos.version}</version>
+				<extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <id>compile-features-test</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>compile-swf</goal>
+                        </goals>
+                    </execution>
+                </executions>
+				<configuration>
+                    <sourceFile>TestRunner.as</sourceFile>
+                    <storepass>thisShouldnBeNeeded</storepass>
+                    <iKnowWhatImDoingPleaseBreakMyBuildIwontBlameFlexmojosForStopWorking>true</iKnowWhatImDoingPleaseBreakMyBuildIwontBlameFlexmojosForStopWorking>
+					<testTimeout>200000</testTimeout>
+					<compilerWarnings>
+						<warn-no-constructor>false</warn-no-constructor>
+					</compilerWarnings>
+                    <coverage>true</coverage>
+                    <coverageReportFormat>
+                        <param>xml</param>
+                        <param>html</param>
+                    </coverageReportFormat>
+                </configuration>
+			</plugin>
+            <plugin>
+                <artifactId>exec-maven-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <executions>
+                    <execution>
+                        <id>cucumber-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>sh</executable>
+                            <workingDirectory>${project.build.directory}</workingDirectory>
+                            <arguments>
+                                <argument>${project.build.directory}/test-features.sh</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+
+        <dependency>
+            <groupId>cukes</groupId>
+            <artifactId>cukes4as3-lib</artifactId>
+            <version>${project.version}</version>
+            <type>swc</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.as3commons</groupId>
+            <artifactId>as3commons-lang</artifactId>
+            <version>0.3.2</version>
+            <type>swc</type>
+            <exclusions>
+                <exclusion>
+                    <artifactId>*</artifactId>
+                    <groupId>*</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.as3commons</groupId>
+            <artifactId>as3commons-logging</artifactId>
+            <version>2.5.1</version>
+            <type>swc</type>
+            <exclusions>
+                <exclusion>
+                    <artifactId>*</artifactId>
+                    <groupId>*</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+		<dependency>
+            <groupId>org.as3commons</groupId>
+            <artifactId>as3commons-bytecode</artifactId>
+            <version>${as3commons.bytecode.version}</version>
+            <type>swc</type>
+            <exclusions>
+                <exclusion>
+                    <artifactId>air-framework</artifactId>
+                    <groupId>com.adobe.flex.framework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>playerglobal</artifactId>
+                    <groupId>com.adobe.flex.framework</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.furusystems</groupId>
+            <artifactId>dconsole</artifactId>
+            <version>${dconsole.version}</version>
+            <type>swc</type>
+        </dependency>
+
+        <!-- required to instrument AIR testRunner -->
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>air-framework</artifactId>
+            <version>${flex.sdk.version}</version>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>airglobal</artifactId>
+            <type>swc</type>
+            <classifier>3.5</classifier>
+            <version>${flex.sdk.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>flex-framework</artifactId>
+            <version>${flex.sdk.version}</version>
+            <type>pom</type>
+            <exclusions>
+                <exclusion>
+                    <artifactId>playerglobal</artifactId>
+                    <groupId>com.adobe.flex.framework</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.spicefactory</groupId>
+            <artifactId>parsley-flex</artifactId>
+            <version>${parsley.version}</version>
+            <type>swc</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.spicefactory</groupId>
+            <artifactId>spicelib-flex</artifactId>
+            <version>${spicelib.version}</version>
+            <type>swc</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.adobe.flexunit</groupId>
+            <artifactId>flexunit</artifactId>
+            <version>${flexunit.version}</version>
+            <type>swc</type>
+        </dependency>
+
+		<dependency>
+			<groupId>asmock</groupId>
+			<artifactId>asmock</artifactId>
+			<version>${asmock.version}</version>
+			<type>swc</type>
+		</dependency>
+
+		<dependency>
+			<groupId>asmock</groupId>
+			<artifactId>asmock-flexunit4.1</artifactId>
+			<version>${asmock.version}</version>
+			<type>swc</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-as3</artifactId>
+			<version>${hamcrest.version}</version>
+			<type>swc</type>
+		</dependency>
+
+	</dependencies>
+	
+</project>
