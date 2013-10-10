@@ -11,7 +11,7 @@
 	<groupId>cukes</groupId>
 	<artifactId>cucumber-as3-examples-parent</artifactId>
 	<version>0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+    <packaging>pom</packaging>
 
 	<modules>
         <module>cucumber-as3-examples-calculator</module>

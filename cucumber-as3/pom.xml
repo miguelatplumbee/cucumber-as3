@@ -76,7 +76,7 @@
 
         <dependency>
             <groupId>cukes</groupId>
-            <artifactId>cukes4as3-lib</artifactId>
+            <artifactId>cucumber-as3-lib</artifactId>
             <version>${project.version}</version>
             <type>swc</type>
         </dependency>

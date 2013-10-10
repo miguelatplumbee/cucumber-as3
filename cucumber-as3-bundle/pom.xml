@@ -61,7 +61,7 @@
 
         <dependency>
             <groupId>cukes</groupId>
-            <artifactId>cukes4as3</artifactId>
+            <artifactId>cucumber-as3</artifactId>
             <version>${project.version}</version>
             <type>swc</type>
             <exclusions>
