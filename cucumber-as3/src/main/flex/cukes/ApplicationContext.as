@@ -17,6 +17,8 @@ public class ApplicationContext
 {
     public const loggingConfig : LoggingConfig = new LoggingConfig();
 
+    public const errorHandler : ErrorHandler = new ErrorHandler();
+
     public const main : Main = new Main();
 
     public const cucumberConnectionBuilder : CucumberConnectionBuilder = new CucumberConnectionBuilder();
@@ -33,7 +35,27 @@ public class ApplicationContext
 
     public const stepMatcher : StepMatcher = new StepMatcher(stepInvoker);
 
-    public const errorHandler : ErrorHandler = new ErrorHandler();
+    public function ApplicationContext()
+    {
+        resolveMain();
+        resolveCommandProcessor();
+    }
+
+    private function resolveMain() : void
+    {
+        main.commandProcessor = commandProcessor;
+        main.cucumberConnectionBuilder = cucumberConnectionBuilder;
+        main.stepMatcher = stepMatcher;
+        main.stepsProcessor = stepsProcessor;
+        main.testRunnerParams = testRunnerParameters;
+        main.wireFileParser = wireFileParser;
+    }
+
+    private function resolveCommandProcessor() : void
+    {
+        commandProcessor.stepInvoker = stepInvoker;
+        commandProcessor.stepMatcher = stepMatcher;
+    }
 
 }
 }

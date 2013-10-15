@@ -72,6 +72,20 @@
             <type>swc</type>
         </dependency>
 
+        <dependency>
+            <groupId>org.spicefactory</groupId>
+            <artifactId>parsley-flex</artifactId>
+            <version>${parsley.version}</version>
+            <type>swc</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.spicefactory</groupId>
+            <artifactId>spicelib-flex</artifactId>
+            <version>${spicelib.version}</version>
+            <type>swc</type>
+        </dependency>
+
     </dependencies>
 
 </project>
