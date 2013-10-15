@@ -4,8 +4,6 @@
  */
 package cukes.cucumber
 {
-import com.flashquartermaster.cuke4as3.net.*;
-import com.adobe.serialization.json.JSON;
 import cukes.cucumber.events.CucumberRequestEvent;
 
 import flash.events.Event;
@@ -55,7 +53,7 @@ public class CucumberConnection extends EventDispatcher implements ICucumberConn
 
     public function send(data:Array):void
     {
-        const encoded:String = com.adobe.serialization.json.JSON.encode(data);
+        const encoded:String = JSON.stringify(data);
         _socket.writeUTFBytes(encoded + EOT);
         _socket.flush();
     }
@@ -66,7 +64,7 @@ public class CucumberConnection extends EventDispatcher implements ICucumberConn
         LOG.info("cucumber request received: {0}", rawSocketData);
         if(rawSocketData != EOT)
         {
-            const data : Array = com.adobe.serialization.json.JSON.decode(rawSocketData);
+            const data : Array = JSON.parse(rawSocketData) as Array;
             dispatchRequestEvent(data);
         }
     }

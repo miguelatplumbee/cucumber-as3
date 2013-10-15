@@ -28,17 +28,7 @@
  **/
 package com.flashquartermaster.cuke4as3.logging
 {
-	import com.furusystems.dconsole2.DConsole;
-	import com.furusystems.dconsole2.core.gui.maindisplay.ConsoleView;
-	import com.furusystems.dconsole2.plugins.plugcollections.AllPlugins;
-	import com.furusystems.logging.slf4as.ILogger;
-	import com.furusystems.logging.slf4as.Logging;
-	import com.furusystems.logging.slf4as.global.debug;
-	import com.furusystems.logging.slf4as.global.error;
-	import com.furusystems.logging.slf4as.global.fatal;
-	import com.furusystems.logging.slf4as.global.info;
-	import com.furusystems.logging.slf4as.global.warn;
-	
+
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
@@ -61,21 +51,22 @@ package com.flashquartermaster.cuke4as3.logging
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
 //			DConsole.clearPersistentData();
-			addChild(DConsole.view);
+//			addChild(DConsole.view);
 //			DConsole.registerPlugins(BasicPlugins);
-			DConsole.registerPlugins(AllPlugins);
+//			DConsole.registerPlugins(AllPlugins);
 //			DConsole.show();
 			
 			
-			DConsole.createCommand("myCommand", myMethod, "My commands", "My helpful string"); 
+//			DConsole.createCommand("myCommand", myMethod, "My commands", "My helpful string");
 			
 
-			DConsole.setTitle("Cuke4AS3 Console");
+//			DConsole.setTitle("Cuke4AS3 Console");
 		}
 		
 		private function myMethod(input:String):Array
 		{
-			return input.split("");
+//			return input.split("");
+            return null;
 		}
 	}
 	

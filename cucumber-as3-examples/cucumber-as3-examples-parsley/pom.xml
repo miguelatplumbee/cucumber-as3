@@ -24,6 +24,8 @@
                 <version>${flexmojos.version}</version>
                 <extensions>true</extensions>
                 <configuration>
+                    <swfVersion>20</swfVersion>
+                    <airVersion>3.7</airVersion>
                     <sourceFile>TestRunner.as</sourceFile>
                     <storepass>thisShouldnBeNeeded</storepass>
                     <iKnowWhatImDoingPleaseBreakMyBuildIwontBlameFlexmojosForStopWorking>true</iKnowWhatImDoingPleaseBreakMyBuildIwontBlameFlexmojosForStopWorking>

@@ -7,6 +7,8 @@ MVP FEATURES
 - text fixtures as object or array
 - bug: seems wire file is not checked into provided file
 - unhandled error should be traced in report
+- remove dependencies dconsole and as3commons if possible
+- remove parsley dependency
 
 
 OTHER FEATURES

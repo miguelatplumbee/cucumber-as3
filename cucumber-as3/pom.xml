@@ -35,6 +35,8 @@
                     </execution>
                 </executions>
 				<configuration>
+                    <swfVersion>20</swfVersion>
+                    <airVersion>3.7</airVersion>
                     <sourceFile>TestRunner.as</sourceFile>
                     <storepass>thisShouldnBeNeeded</storepass>
                     <iKnowWhatImDoingPleaseBreakMyBuildIwontBlameFlexmojosForStopWorking>true</iKnowWhatImDoingPleaseBreakMyBuildIwontBlameFlexmojosForStopWorking>
@@ -78,56 +80,6 @@
             <groupId>cukes</groupId>
             <artifactId>cucumber-as3-lib</artifactId>
             <version>${project.version}</version>
-            <type>swc</type>
-        </dependency>
-
-        <dependency>
-            <groupId>org.as3commons</groupId>
-            <artifactId>as3commons-lang</artifactId>
-            <version>0.3.2</version>
-            <type>swc</type>
-            <exclusions>
-                <exclusion>
-                    <artifactId>*</artifactId>
-                    <groupId>*</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.as3commons</groupId>
-            <artifactId>as3commons-logging</artifactId>
-            <version>2.5.1</version>
-            <type>swc</type>
-            <exclusions>
-                <exclusion>
-                    <artifactId>*</artifactId>
-                    <groupId>*</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-		<dependency>
-            <groupId>org.as3commons</groupId>
-            <artifactId>as3commons-bytecode</artifactId>
-            <version>${as3commons.bytecode.version}</version>
-            <type>swc</type>
-            <exclusions>
-                <exclusion>
-                    <artifactId>air-framework</artifactId>
-                    <groupId>com.adobe.flex.framework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>playerglobal</artifactId>
-                    <groupId>com.adobe.flex.framework</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>com.furusystems</groupId>
-            <artifactId>dconsole</artifactId>
-            <version>${dconsole.version}</version>
             <type>swc</type>
         </dependency>
 
