@@ -1,10 +1,10 @@
 # cucumber-as3
 
-*cucumber-as3* allows developer to write step definitions in Actionscript and use them to instrument cucumber tests.
+**cucumber-as3** allows developer to write step definitions in Actionscript and use them to instrument cucumber tests.
 
 ## example
 
-Given the following feature written using Gherkin:
+Given the following feature written using Gherkin syntax:
 
  ```gherkin
  # calculator.feature
@@ -18,7 +18,7 @@ Given the following feature written using Gherkin:
  ```
 
 
-and a Calculator written in Actionscript
+and a Calculator written in Actionscript:
 
  ```as3
 public class Calculator {
@@ -74,7 +74,6 @@ and execute the test using cucumber
 
  ```bash
  cucumber calculator.feature
-
  ```
 
 
