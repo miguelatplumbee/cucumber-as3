@@ -2,7 +2,14 @@
 
 > Write step definitions in Actionscript and use them to instrument your cucumber tests.
 
-## Usage
+**Cucumber-as3** enables Actionscript developers to write and run functional tests using [Gherkin](https://github.com/cucumber/cucumber/wiki/Gherkin) syntax and [Cucumber](http://cukes.info).
+
+Cucumber-as3 is not a reimplementation of cucumber in a different language, such as cucumber-jvm or cucumber-js. Instead, it makes use of cucumber [wire protocol](https://github.com/cucumber/cucumber/wiki/Wire-Protocol) to test features against a TestRunner written in AS3.
+
+ * [Getting Started](https://github.com/miguelatplumbee/cucumber-as3/blob/master/cucumber-as3-wiki/getting_started.md)
+ * [Writing step definitions in AS3](https://github.com/miguelatplumbee/cucumber-as3/blob/master/cucumber-as3-wiki/step_definitions.md)
+
+### Usage
 
 Given the following feature written using Gherkin syntax:
 
@@ -18,7 +25,7 @@ Given the following feature written using Gherkin syntax:
  ```
 
 
-and a Calculator written in Actionscript:
+and a `Calculator` written in Actionscript:
 
  ```as3
 public class Calculator {
@@ -32,7 +39,7 @@ public class Calculator {
 }
  ```
 
-you can implement the step definitions for this tests in as3:
+you can implement the step definitions required by the test:
 
 
  ```as3
@@ -67,7 +74,7 @@ public class Calculator_Steps {
 }
  ```
 
-next step is prepare your **TestRunner** and run it as an Air application
+Next step is prepare your **TestRunner** and run it as an Air application
 
 ```as3
 public class TestRunner extends Sprite
