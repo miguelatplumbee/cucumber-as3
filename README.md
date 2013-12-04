@@ -1,8 +1,8 @@
 # cucumber-as3
 
-**cucumber-as3** allows developer to write step definitions in Actionscript and use them to instrument cucumber tests.
+> Write step definitions in Actionscript and use them to instrument your cucumber tests.
 
-## example
+## Usage
 
 Given the following feature written using Gherkin syntax:
 
@@ -23,12 +23,12 @@ and a Calculator written in Actionscript:
  ```as3
 public class Calculator {
 
-		public function push(n:Number):void { ... }
+    public function push(n:Number):void { ... }
 
-		public function divide():Number { ... }
+    public function divide():Number { ... }
 
-		public function add():Number { ... }
-	}
+    public function add():Number { ... }
+
 }
  ```
 
@@ -36,45 +36,54 @@ you can implement the step definitions for this tests in as3:
 
 
  ```as3
-package step_definitions {
+public class Calculator_Steps {
 
-    public class Calculator_Steps {
+    private var _calculator:Calculator;
 
-        private var _calculator:Calculator;
+    [BeforeScenario]
+    public function setup() : void {
+        _calculator = new Calculator();
+    }
 
-        [BeforeScenario]
-        public function setup() : void {
-            _calculator = new Calculator();
-        }
+    [AfterScenario]
+    public function tearDown() : void {
+        _calculator = null;
+    }
 
-        [AfterScenario]
-        public function tearDown() : void {
-            _calculator = null;
-        }
+    [Given(/^I have entered (\d+) into the calculator$/g)]
+    public function pushNumber( n:Number ) : void {
+        _calculator.push(n);
+    }
 
-        [Given(/^I have entered (\d+) into the calculator$/g)]
-        public function pushNumber( n:Number ) : void {
-            _calculator.push(n);
-        }
+    [When(/^I want it to add$/)]
+    public function pressButton(button:String) : void {
+        _calculator.add();
+    }
 
-        [When(/^I want it to add$/)]
-        public function pressButton(button:String) : void {
-            _calculator.add();
-        }
-
-        [Then(/^the current value should be (.*)$/)]
-        public function checkValue(value:Number) : void {
-            assertEquals(value, _calculator.result);
-        }
+    [Then(/^the current value should be (.*)$/)]
+    public function checkValue(value:Number) : void {
+        assertEquals(value, _calculator.result);
     }
 }
  ```
 
-and execute the test using cucumber
+next step is prepare your **TestRunner** and run it as an Air application
+
+```as3
+public class TestRunner extends Sprite
+{
+    public function TestRunner () {
+        super();
+
+        const runner : CukesTestRunner = new CukesTestRunner();
+        runner.stepDefinitions = [Calculator_Steps];
+        runner.run();
+    }
+}
+```
+
+and execute the test using cucumber in a terminal
 
  ```bash
  cucumber calculator.feature
  ```
-
-
-
