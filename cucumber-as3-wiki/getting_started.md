@@ -7,13 +7,13 @@ Prerequisites:
 Given the following feature:
 
  ```gherkin
- Feature: how to do some math
+Feature: how to do some math
 
- 	Scenario: Adding two numbers
- 	    Given I have entered 3 into the calculator
- 	    And I have entered 1 into the calculator
- 	    When I want it to add
- 	    Then the current value should be 4
+Scenario: Adding two numbers
+    Given I have entered 3 into the calculator
+    And I have entered 1 into the calculator
+    When I want it to add
+    Then the current value should be 4
  ```
 
  and the following `Calculator` class written in Actionscript

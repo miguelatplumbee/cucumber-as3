@@ -14,14 +14,14 @@ Cucumber-as3 is not a reimplementation of cucumber in a different language (such
 Given the following feature written using Gherkin syntax:
 
  ```gherkin
- # calculator.feature
- Feature: how to do some math
+# calculator.feature
+Feature: how to do some math
 
- 	Scenario: Adding two numbers
- 	    Given I have entered 3 into the calculator
- 	    And I have entered 1 into the calculator
- 	    When I want it to add
- 	    Then the current value should be 4
+Scenario: Adding two numbers
+    Given I have entered 3 into the calculator
+    And I have entered 1 into the calculator
+    When I want it to add
+    Then the current value should be 4
  ```
 
 
@@ -74,7 +74,7 @@ public class Calculator_Steps {
 }
  ```
 
-Next step is prepare your **TestRunner** and execute it as an Air application
+Next step is to prepare your **TestRunner** and execute it as an Air application
 
 ```as3
 public class TestRunner extends Sprite
