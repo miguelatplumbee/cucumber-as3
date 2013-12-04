@@ -1,5 +1,8 @@
 ## Getting started with cucumber-as3
 
+Prerequisites:
+ * Cucumber must be installed - [instructions](https://github.com/cucumber/cucumber/wiki/Install)
+ * Adobe Air SDK (or any Flash IDE, such as Flash Builder or IntelliJ) should be available to build and run AS3 applications.
 
 Given the following feature:
 
@@ -80,5 +83,4 @@ public class Calculator_Steps {
 
 In order to execute this test using cucumber we need to enable communication between out Actionscript TestRunner and cucumber runner. A file with `.wire` extension is expected to be found in `step_definitions` folder. The layout of the project should look like this:
 
-
-![Alt text](https://github.com/miguelatplumbee/cucumber-as3/blob/master/cucumber-as3-wiki/img/file_layout_1.png)
+![Alt text](http://raw.github.com/miguelatplumbee/cucumber-as3/master/cucumber-as3-wiki/img/file_layout_1.png)
