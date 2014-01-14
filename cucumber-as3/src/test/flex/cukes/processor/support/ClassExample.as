@@ -29,7 +29,7 @@ public class ClassExample
     {
     }
 
-    [Then(/^the current value should be (.*)$/)]
+    [Then(/^the current value should be (.*)$/, "async")]
     public function checkValue( value:Number ):void
     {
     }
