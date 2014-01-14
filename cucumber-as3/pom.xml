@@ -35,7 +35,7 @@
                     </execution>
                 </executions>
 				<configuration>
-                    <swfVersion>20</swfVersion>
+                    <swfVersion>14</swfVersion>
                     <airVersion>3.7</airVersion>
                     <sourceFile>TestRunner.as</sourceFile>
                     <storepass>thisShouldnBeNeeded</storepass>
