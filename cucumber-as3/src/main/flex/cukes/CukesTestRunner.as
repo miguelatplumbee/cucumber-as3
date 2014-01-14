@@ -15,8 +15,6 @@ public class CukesTestRunner
 
     public var featuresDir : String;
 
-    public var cucumberHost : String;
-
     public var cucumberPort : uint;
 
     public function run(loaderInfo:LoaderInfo = null) : void
@@ -28,7 +26,6 @@ public class CukesTestRunner
         const params : TestRunnerParameters = context.testRunnerParameters;
         params.stepDefinitions = stepDefinitions;
         params.featuresDir = featuresDir ? featuresDir : File.applicationDirectory.nativePath;
-        params.cucumberHost = cucumberHost;
         params.cucumberPort = cucumberPort;
 
         context.main.run();

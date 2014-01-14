@@ -37,14 +37,13 @@ import flash.filesystem.FileStream;
 public class WireFileParser
 	{
 
-		public function getServerInfoFromWireFile(srcDir:String,host:String,port:uint):CucumberServerInfo
+		public function getServerInfoFromWireFile(srcDir:String, port:uint):CucumberServerInfo
 		{
             var serverInfo : CucumberServerInfo
 
-            if(host && port > 0)
+            if(port > 0)
             {
                 serverInfo = new CucumberServerInfo();
-                serverInfo.host = host;
                 serverInfo.port = port;
                 return serverInfo;
             }
@@ -66,7 +65,6 @@ public class WireFileParser
 			if(wireFile)
 			{
                 serverInfo = processWireFile(wireFile);
-                serverInfo.host = host ? host : serverInfo.host; //overriding parameters
                 serverInfo.port = port > 0 ? port : serverInfo.port;
                 return serverInfo;
 			}
@@ -114,7 +112,6 @@ public class WireFileParser
 			var host:Object = getHost.exec( fileString );
 			var port:Object = getPort.exec( fileString );
 
-			serverInfo.host = ( host[1] as String ).indexOf( "localhost") != -1 ? "127.0.0.1" : host[1];
 			serverInfo.port = int( port[1] );
 
 			return serverInfo;

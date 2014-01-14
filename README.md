@@ -84,6 +84,7 @@ public class TestRunner extends Sprite
 
         const runner : CukesTestRunner = new CukesTestRunner();
         runner.stepDefinitions = [Calculator_Steps];
+        runner.cucumberPort = 56712;
         runner.run();
     }
 }

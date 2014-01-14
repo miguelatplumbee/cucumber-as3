@@ -47,9 +47,9 @@ public class Main
         stepMatcher.matchableSteps = stepsProcessor.getMatchableSteps(testRunnerParams.stepDefinitions);
 
         const cucumberServerInfo : CucumberServerInfo = wireFileParser.getServerInfoFromWireFile
-                (testRunnerParams.featuresDir, testRunnerParams.cucumberHost, testRunnerParams.cucumberPort);
+                (testRunnerParams.featuresDir, testRunnerParams.cucumberPort);
 
-        _cucumberConnection = cucumberConnectionBuilder.build(cucumberServerInfo.host, cucumberServerInfo.port);
+        _cucumberConnection = cucumberConnectionBuilder.build(cucumberServerInfo.port);
 
         _cucumberConnection.addEventListener(CucumberRequestEvent.REQUEST, cucumberRequestHandler);
 

@@ -11,8 +11,6 @@ public class TestRunnerParameters
 
     public var stepDefinitions : Array;
 
-    public var cucumberHost : String;
-
     public var cucumberPort : uint;
 
 }

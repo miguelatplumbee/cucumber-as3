@@ -8,6 +8,8 @@
 	<packaging>pom</packaging>
 
     <properties>
+        <maven.test.skip>false</maven.test.skip>
+
         <as3commons.bytecode.version>1.0</as3commons.bytecode.version>
         <dconsole.version>2.3</dconsole.version>
         <hamcrest.version>1.1</hamcrest.version>

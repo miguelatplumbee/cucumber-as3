@@ -14,27 +14,25 @@ import flash.net.Socket;
 public class CucumberConnectionBuilder
 {
 
-    private var _host : String;
     private var _port : uint;
 
     private var _server : ServerSocket;
 
     private var _cucumberConnection : CucumberConnection;
 
-    public function build(host:String, port:uint) : ICucumberConnection
+    public function build(port:uint) : ICucumberConnection
     {
         if(_server)
         {
-            throw new Error("Cucumber Connection is already active at " + _host + ":" + _port);
+            throw new Error("Cucumber Connection is already active at :" + _port);
         }
 
-        this._host = host;
         this._port = port;
 
         _server = new ServerSocket();
         _server.addEventListener(ServerSocketConnectEvent.CONNECT, onServerSocketConnect);
         _server.addEventListener(Event.CLOSE, onServerSocketClose);
-        _server.bind( _port, _host );
+        _server.bind( _port );
         _server.listen();
 
         _cucumberConnection = new CucumberConnection();
@@ -70,6 +68,8 @@ public class CucumberConnectionBuilder
         {
             _cucumberConnection.destroy();
         }
+
+        throw new Error("SSOCKET SERVER CLOSED!!!");
     }
 
 }
