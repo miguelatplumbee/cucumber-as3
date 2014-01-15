@@ -30,10 +30,6 @@ public class MatchableStep
         try
         {
             _regexpString = xmlDef.metadata.arg[0].@value;
-            const split : Array = _regexpString.split("/");
-            const regex : String = split[1];
-            const flags : String = split[2];
-            _regexp = new RegExp(regex, flags);
         }
         catch(error:Error)
         {
@@ -74,12 +70,20 @@ public class MatchableStep
 
     public function match(matchString:String ):Object
     {
-        if(!_regexp)
+        if(!_regexpString)
         {
             return null;
         }
 
-        return _regexp.exec(matchString);
+        var a:Array = _regexpString.split( "/" );
+
+        var regex:String = a[1];
+        var flags:String = a[2];
+
+        var pattern:RegExp = new RegExp( regex, flags );
+
+        return pattern.exec( matchString );
     }
+
 }
 }

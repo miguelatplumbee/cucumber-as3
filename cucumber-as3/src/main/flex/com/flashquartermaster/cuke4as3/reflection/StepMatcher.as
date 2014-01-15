@@ -54,7 +54,7 @@ public class StepMatcher implements IStepMatcher
 
                 try
                 {
-                    var result:Object = matchStringWithRegExFromMetadata( step.regexp, matchString );
+                    var result:Object = step.match(matchString );
 
                     if( result != null)
                     {
@@ -72,29 +72,6 @@ public class StepMatcher implements IStepMatcher
 
             return matchInfo;
         }
-
-        //Refactor Note: Result object contains the index and the input string
-        /*
-         var result:Object = pattern.exec( s );
-         while( result != null )
-         {
-         trace (result.length, result.input, "\t", result.index, "\t", result);
-         result = pattern.exec( s );
-         }
-         */
-
-        private function matchStringWithRegExFromMetadata( regExInMetadata:String, matchString:String ):Object
-        {
-            var a:Array = regExInMetadata.split( "/" );//These are the slashes that wrap the regexp
-
-            var regex:String = a[1];
-            var flags:String = a[2];
-
-            var pattern:RegExp = new RegExp( regex, flags );
-
-            return pattern.exec( matchString );
-        }
-
 
         private function getArgsFromResult( result:Object, matchString:String ):Array
         {
