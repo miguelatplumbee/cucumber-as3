@@ -23,5 +23,17 @@ public class StepsProcessor
         return result;
     }
 
+    public function getMatchableStepsArray (stepDefinitions : Array) : Vector.<MatchableStep>
+    {
+        const result : Vector.<MatchableStep> = new Vector.<MatchableStep>();
+
+        for each(var stepDefinition : XML in getMatchableSteps(stepDefinitions))
+        {
+            result.push(new MatchableStep(stepDefinition));
+        }
+
+        return result;
+    }
+
 }
 }
