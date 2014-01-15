@@ -49,6 +49,13 @@ public class MatchableStepTest
     }
 
     [Test]
+    public function methodName_is_resolved() : void
+    {
+        step = new MatchableStep(asyncMethod);
+        assertEquals("checkValue", step.methodName);
+    }
+
+    [Test]
     public function createInstance_returns_correct_value() : void
     {
         step = new MatchableStep(asyncMethod);

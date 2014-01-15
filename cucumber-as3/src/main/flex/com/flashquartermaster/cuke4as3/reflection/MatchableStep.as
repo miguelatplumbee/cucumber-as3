@@ -10,12 +10,15 @@ public class MatchableStep
 
     private var _className : String;
     private var _regexp : RegExp;
+    private var _methodName : String;
     private var _xmlDef : XML;
     private var _isAsync : Boolean;
 
     public function MatchableStep(xmlDef : XML)
     {
         _xmlDef = xmlDef;
+
+        _methodName = xmlDef.@name;
 
         const colonReplace:RegExp = /::/g;
         _className = xmlDef.@declaredBy;
@@ -50,6 +53,11 @@ public class MatchableStep
     public function get className() : String
     {
         return _className;
+    }
+
+    public function get methodName() : String
+    {
+        return _methodName;
     }
 
     public function createInstance() : Object
