@@ -4,13 +4,14 @@ MVP FEATURES
 - [ ] documentation: tutorial
 - [ ] documentation: flash builder example
 - [ ] global error handling
-- [ ] text fixtures as object or array
 - [ ] bug: seems wire file is not checked into provided file
 - [ ] unhandled error should be traced in report
 
 
 OTHER FEATURES
 ------------------------
+- [ ] extract XMLList methods to abstraction - MatchableStep
+- [ ] text fixtures as object or array
 - [ ] async for hooks
 - [ ] cucumberConnection events: started, error
 - [ ] support static methods
@@ -22,7 +23,6 @@ OTHER FEATURES
 - [ ] improve logging support
 - [ ] tagged hooks
 - [ ] extract and unit test wire parser
-- [ ] extract XMLList methods to abstraction
 - [ ] refactor: encapsulation of XML class defitions + metadata resolution
 - [ ] create new module with proper module structure
 
