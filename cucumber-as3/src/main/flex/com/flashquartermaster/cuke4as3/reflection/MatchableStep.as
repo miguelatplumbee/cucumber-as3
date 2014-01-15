@@ -10,6 +10,7 @@ public class MatchableStep
 
     private var _className : String;
     private var _regexp : RegExp;
+    private var _regexpString : String;
     private var _methodName : String;
     private var _xmlDef : XML;
     private var _isAsync : Boolean;
@@ -28,8 +29,8 @@ public class MatchableStep
 
         try
         {
-            const regExpValue : String = xmlDef.metadata.arg[0].@value;
-            const split : Array = regExpValue.split("/");
+            _regexpString = xmlDef.metadata.arg[0].@value;
+            const split : Array = _regexpString.split("/");
             const regex : String = split[1];
             const flags : String = split[2];
             _regexp = new RegExp(regex, flags);
@@ -58,6 +59,11 @@ public class MatchableStep
     public function get methodName() : String
     {
         return _methodName;
+    }
+
+    public function get regexp() : String
+    {
+        return _regexpString;
     }
 
     public function createInstance() : Object

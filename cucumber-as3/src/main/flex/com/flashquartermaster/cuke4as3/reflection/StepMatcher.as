@@ -52,19 +52,16 @@ public class StepMatcher implements IStepMatcher
             for each ( var step:MatchableStep in _matchableSteps )
             {
 
-                var methodXml : XML = step.xmlDef;
                 try
                 {
-                    var regExInMetadata:String = methodXml.metadata.arg[0].@value;
-
-                    var result:Object = matchStringWithRegExFromMetadata( regExInMetadata, matchString );
+                    var result:Object = matchStringWithRegExFromMetadata( step.regexp, matchString );
 
                     if( result != null)
                     {
                         matchInfo.className = step.className;
                         matchInfo.args = getArgsFromResult( result, matchString );
-                        matchInfo.id = _stepInvoker.saveMethodDefinitionForInvokation( methodXml );
-                        matchInfo.regExp = regExInMetadata;
+                        matchInfo.id = _stepInvoker.saveMethodDefinitionForInvokation( step.xmlDef );
+                        matchInfo.regExp = step.regexp;
                         break;
                     }
                 }catch(error:Error)
