@@ -35,8 +35,8 @@ package com.flashquartermaster.cuke4as3.reflection
 
         function destroy():void;
 
-        function get matchableSteps():XMLList;
+        function get matchableSteps():Vector.<MatchableStep>;
 
-        function set matchableSteps( value:XMLList ):void;
+        function set matchableSteps( value:Vector.<MatchableStep> ):void;
     }
 }

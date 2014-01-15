@@ -44,7 +44,7 @@ public class Main
     {
         testRunnerParams.featuresDir = File.applicationDirectory.nativePath;
 
-        stepMatcher.matchableSteps = stepsProcessor.getMatchableSteps(testRunnerParams.stepDefinitions);
+        stepMatcher.matchableSteps = stepsProcessor.getMatchableStepsArray(testRunnerParams.stepDefinitions);
 
         const cucumberServerInfo : CucumberServerInfo = wireFileParser.getServerInfoFromWireFile
                 (testRunnerParams.featuresDir, testRunnerParams.cucumberPort);

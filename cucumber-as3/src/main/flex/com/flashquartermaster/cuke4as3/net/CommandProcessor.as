@@ -31,6 +31,7 @@ import com.flashquartermaster.cuke4as3.events.InvokeMethodEvent;
 import com.flashquartermaster.cuke4as3.events.ProcessedCommandEvent;
 import com.flashquartermaster.cuke4as3.reflection.IStepInvoker;
 import com.flashquartermaster.cuke4as3.reflection.IStepMatcher;
+import com.flashquartermaster.cuke4as3.reflection.MatchableStep;
 import com.flashquartermaster.cuke4as3.util.CucumberMessageMaker;
 import com.flashquartermaster.cuke4as3.util.SnippetGenerator;
 import com.flashquartermaster.cuke4as3.vo.InvokeInfo;
@@ -179,8 +180,10 @@ public class CommandProcessor extends EventDispatcher implements ICommandProcess
 
     private function runStepsByMetadataName (metadataName:String):void
     {
-        for each(var step:XML in stepMatcher.matchableSteps)
+        for each(var matchableStep:MatchableStep in stepMatcher.matchableSteps)
         {
+
+            var step : XML = matchableStep.xmlDef;
             for each(var metadata:* in step..metadata)
             {
                 var name : String = metadata.@name;

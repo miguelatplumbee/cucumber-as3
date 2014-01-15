@@ -32,7 +32,7 @@ import com.flashquartermaster.cuke4as3.vo.MatchInfo;
 
 public class StepMatcher implements IStepMatcher
     {
-        private var _matchableSteps:XMLList;
+        private var _matchableSteps:Vector.<MatchableStep>;
         private var _stepInvoker:IStepInvoker;
 
         public function StepMatcher( stepInvoker:IStepInvoker )
@@ -50,8 +50,10 @@ public class StepMatcher implements IStepMatcher
 
             const matchInfo:MatchInfo = new MatchInfo();
 
-            for each ( var methodXml:XML in _matchableSteps )
+            for each ( var step:MatchableStep in _matchableSteps )
             {
+
+                var methodXml : XML = step.xmlDef;
                 try
                 {
                     var regExInMetadata:String = methodXml.metadata.arg[0].@value;
@@ -129,12 +131,12 @@ public class StepMatcher implements IStepMatcher
             _stepInvoker = null
         }
 
-        public function get matchableSteps():XMLList
+        public function get matchableSteps():Vector.<MatchableStep>
         {
             return _matchableSteps;
         }
 
-        public function set matchableSteps( value:XMLList ):void
+        public function set matchableSteps( value:Vector.<MatchableStep> ):void
         {
             _matchableSteps = value;
         }

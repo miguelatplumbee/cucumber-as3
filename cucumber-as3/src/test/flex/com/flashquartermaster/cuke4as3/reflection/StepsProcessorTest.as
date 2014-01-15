@@ -26,14 +26,15 @@ public class StepsProcessorTest
     [Test]
     public function steps_by_array_are_resolved() : void
     {
-        var list : XMLList = stepsProcessor.getMatchableSteps([StepDefinitionsClassTest1, StepDefinitionsClassTest2]);
+        var list : Vector.<MatchableStep> = stepsProcessor.getMatchableStepsArray([
+                    StepDefinitionsClassTest1, StepDefinitionsClassTest2]);
         checkStepsXMLList(list)
 
     }
 
-    private function checkStepsXMLList(list : XMLList) : void
+    private function checkStepsXMLList(list : Vector.<MatchableStep>) : void
     {
-        assertEquals(4, list.length());
+        assertEquals(4, list.length);
 
         assertHasNodeWithName("checkSomething", list);
         assertHasNodeWithName("doSomething", list);
@@ -41,11 +42,11 @@ public class StepsProcessorTest
         assertHasNodeWithName("doSomething2", list);
     }
 
-    private function assertHasNodeWithName(name : String, list : XMLList) : void
+    private function assertHasNodeWithName(name : String, list : Vector.<MatchableStep>) : void
     {
-        for each(var xml : XML in list)
+        for each(var xml : MatchableStep in list)
         {
-            var nodeName : String = xml.@name;
+            var nodeName : String = xml.xmlDef.@name;
             if(nodeName == name)
             {
                 return;

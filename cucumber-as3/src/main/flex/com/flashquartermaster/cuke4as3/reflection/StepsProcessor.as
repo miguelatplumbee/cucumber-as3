@@ -9,7 +9,7 @@ import flash.utils.describeType;
 public class StepsProcessor
 {
 
-    public function getMatchableSteps (stepDefinitions : Array) : XMLList
+    private function getMatchableSteps (stepDefinitions : Array) : XMLList
     {
         var result : XMLList = new XMLList();
 

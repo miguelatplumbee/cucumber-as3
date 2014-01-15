@@ -83,16 +83,17 @@ package com.flashquartermaster.cuke4as3.reflection
         [Test]
         public function should_manage_undefined_content_in_conditional_capturing_groups():void
         {
-            var matchableStep:XMLList =
-                        new XMLList( <method name="pushNumber" declaredBy="features.step_definitions::Calculator_Steps" returnType="void">
+            var matchableStep:XML =
+                       <method name="pushNumber" declaredBy="features.step_definitions::Calculator_Steps" returnType="void">
                                         <parameter index="1" type="String" optional="false"/>
                                         <parameter index="1" type="Number" optional="false"/>
                                         <metadata name="Given">
                                             <arg key="" value="/^I have entered (a\s)?(\\d+) into the calculator$/g"/>
                                         </metadata>
-                                    </method>);
+                                    </method>;
 
-            _sut.matchableSteps = matchableStep;
+            _sut.matchableSteps = new Vector.<MatchableStep>();
+            _sut.matchableSteps.push(new MatchableStep(matchableStep));
 
             var result:MatchInfo = _sut.match( "I have entered 6 into the calculator" );
         }
@@ -100,16 +101,17 @@ package com.flashquartermaster.cuke4as3.reflection
         [Test]
         public function should_manage_undefined_content_in_conditional_capturing_groups_control_function():void
         {
-            var matchableStep:XMLList =
-                        new XMLList( <method name="pushNumber" declaredBy="features.step_definitions::Calculator_Steps" returnType="void">
+            var matchableStep:XML =
+                        <method name="pushNumber" declaredBy="features.step_definitions::Calculator_Steps" returnType="void">
                                         <parameter index="1" type="String" optional="false"/>
                                         <parameter index="1" type="Number" optional="false"/>
                                         <metadata name="Given">
                                             <arg key="" value="/^I have entered (a\s)?(\\d+) into the calculator$/g"/>
                                         </metadata>
-                                    </method>);
+                                    </method>;
 
-            _sut.matchableSteps = matchableStep;
+            _sut.matchableSteps = new Vector.<MatchableStep>();
+            _sut.matchableSteps.push(new MatchableStep(matchableStep));
 
             var result:MatchInfo = _sut.match( "I have entered a 6 into the calculator" );
         }
@@ -118,7 +120,7 @@ package com.flashquartermaster.cuke4as3.reflection
         public function should_get_matchableSteps():void
         {
             //Note: the setter test uses the getter so we just check defaults
-            var returnValue:XMLList = _sut.matchableSteps;
+            var returnValue:Vector.<MatchableStep> = _sut.matchableSteps;
 
             assertThat( returnValue, nullValue() );
         }
@@ -128,16 +130,17 @@ package com.flashquartermaster.cuke4as3.reflection
         {
             //Invokable steps are set by the SwfProcessor
             //when searching through the xml class descriptions
-            var inputValue:XMLList = new XMLList( <method name="pushNumber" declaredBy="features.step_definitions::Calculator_Steps" returnType="void">
+            var inputValue:XML = <method name="pushNumber" declaredBy="features.step_definitions::Calculator_Steps" returnType="void">
                 <parameter index="1" type="Number" optional="false"/>
                 <metadata name="Given">
                     <arg key="" value="/^I have entered (\d+) into the calculator$/g"/>
                 </metadata>
-            </method> );
+            </method> ;
 
-            _sut.matchableSteps = inputValue;
+            _sut.matchableSteps = new Vector.<MatchableStep>();
+            _sut.matchableSteps.push(new MatchableStep(inputValue));
 
-            var returnValue:XMLList = _sut.matchableSteps;
+            var returnValue:XML = _sut.matchableSteps[0].xmlDef;
 
             assertThat( inputValue, equalTo( returnValue ) );
         }
