@@ -27,7 +27,6 @@
  **/
 package com.flashquartermaster.cuke4as3.reflection
 {
-import com.flashquartermaster.cuke4as3.util.StringUtilities;
 import com.flashquartermaster.cuke4as3.vo.MatchInfo;
 
 public class StepMatcher implements IStepMatcher
@@ -62,7 +61,7 @@ public class StepMatcher implements IStepMatcher
 
                     if( result != null)
                     {
-                        matchInfo.className = StringUtilities.getClassNameFromDeclaredBy( methodXml.@declaredBy );
+                        matchInfo.className = step.className;
                         matchInfo.args = getArgsFromResult( result, matchString );
                         matchInfo.id = _stepInvoker.saveMethodDefinitionForInvokation( methodXml );
                         matchInfo.regExp = regExInMetadata;
