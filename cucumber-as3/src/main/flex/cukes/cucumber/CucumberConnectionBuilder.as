@@ -35,21 +35,30 @@ public class CucumberConnectionBuilder
         _server.bind( _port );
         _server.listen();
 
+        trace("cucumber socket server starts listening");
+
         _cucumberConnection = new CucumberConnection();
         return _cucumberConnection;
     }
 
     private function onServerSocketConnect(event:ServerSocketConnectEvent):void
     {
+        trace("cucumber socket server connected");
         const socket : Socket = event.socket as Socket;
+        _cucumberConnection.destroy();
         _cucumberConnection.start(socket);
     }
 
     private function onServerSocketClose(event:Event):void
     {
+        trace("cucumber socket server closed");
         destroy();
     }
 
+    public function get serverSocket () : ServerSocket
+    {
+        return _server;
+    }
 
     public function destroy() : void
     {
@@ -68,8 +77,6 @@ public class CucumberConnectionBuilder
         {
             _cucumberConnection.destroy();
         }
-
-        throw new Error("SSOCKET SERVER CLOSED!!!");
     }
 
 }

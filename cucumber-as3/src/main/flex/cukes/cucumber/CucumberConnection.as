@@ -23,6 +23,7 @@ public class CucumberConnection extends EventDispatcher implements ICucumberConn
 
     public function start(socket:Socket) : void
     {
+        trace("cucumber socket created: " + socket.localAddress + ":" + socket.localPort);
         if(!_socket)
         {
             _socket = socket;
@@ -56,7 +57,7 @@ public class CucumberConnection extends EventDispatcher implements ICucumberConn
     private function onSocketDataReceived(event:Event):void
     {
         const rawSocketData : String = _socket.readUTFBytes(_socket.bytesAvailable);
-        trace("cucumber request received: {0}", rawSocketData);
+        trace("cucumber socket request received: {0}", rawSocketData);
         if(rawSocketData != EOT)
         {
             const data : Array = JSON.parse(rawSocketData) as Array;
@@ -75,6 +76,7 @@ public class CucumberConnection extends EventDispatcher implements ICucumberConn
 
     private function onSocketClose(event:Event) : void
     {
+        trace("cucumber socket closed");
         destroy();
         dispatchEvent(new CucumberRequestEvent(CucumberRequestEvent.CONNECTION_CLOSED));
     }

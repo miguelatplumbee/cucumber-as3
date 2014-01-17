@@ -17,9 +17,11 @@ public class CukesTestRunner
 
     public var cucumberPort : uint;
 
+    private var context : ApplicationContext;
+
     public function run(loaderInfo:LoaderInfo = null) : void
     {
-        const context : ApplicationContext = new ApplicationContext();
+        context = new ApplicationContext();
 
         context.errorHandler.registerUncaughtErrorEventHandler(loaderInfo);
 
@@ -29,6 +31,18 @@ public class CukesTestRunner
         params.cucumberPort = cucumberPort;
 
         context.main.run();
+    }
+
+    public function get isRunning() : Boolean
+    {
+        if(context.cucumberConnectionBuilder.serverSocket)
+        {
+            return context.cucumberConnectionBuilder.serverSocket.listening;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }
