@@ -9,7 +9,7 @@ cucumber --strict --format pretty --out cucumber-log.txt \
 
 RES=$?
 
-ps -ef | grep "TestRunner" | awk '{print $2}' | xargs kill
+ps -ef | grep "MirrorballSlotsMain-descriptor" | awk '{print $2}' | xargs kill
 
 echo "exit code = $RES"
 

@@ -9,7 +9,6 @@ public class MatchableStep
 {
 
     private var _className : String;
-    private var _regexp : RegExp;
     private var _regexpString : String;
     private var _methodName : String;
     private var _xmlDef : XML;
@@ -75,7 +74,7 @@ public class MatchableStep
             return null;
         }
 
-        var a:Array = _regexpString.split( "/" );
+        var a:Array = _regexpString.split("/");
 
         var regex:String = a[1];
         var flags:String = a[2];

@@ -17,11 +17,13 @@ public class CukesTestRunner
 
     public var cucumberPort : uint;
 
+    public var portRangeLast : uint = 0;
+
     private var context : ApplicationContext;
 
     public function run(loaderInfo:LoaderInfo = null) : void
     {
-        context = new ApplicationContext();
+        context = new ApplicationContext(loaderInfo.content.stage);
 
         context.errorHandler.registerUncaughtErrorEventHandler(loaderInfo);
 
@@ -29,6 +31,7 @@ public class CukesTestRunner
         params.stepDefinitions = stepDefinitions;
         params.featuresDir = featuresDir ? featuresDir : File.applicationDirectory.nativePath;
         params.cucumberPort = cucumberPort;
+        params.portRangeLast = portRangeLast;
 
         context.main.run();
     }

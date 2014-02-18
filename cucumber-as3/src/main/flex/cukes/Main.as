@@ -49,7 +49,8 @@ public class Main
         const cucumberServerInfo : CucumberServerInfo = wireFileParser.getServerInfoFromWireFile
                 (testRunnerParams.featuresDir, testRunnerParams.cucumberPort);
 
-        _cucumberConnection = cucumberConnectionBuilder.build(cucumberServerInfo.port);
+        _cucumberConnection = cucumberConnectionBuilder.build(
+                cucumberServerInfo.port, testRunnerParams.portRangeLast);
 
         _cucumberConnection.addEventListener(CucumberRequestEvent.REQUEST, cucumberRequestHandler);
 

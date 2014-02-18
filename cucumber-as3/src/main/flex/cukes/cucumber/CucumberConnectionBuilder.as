@@ -16,11 +16,15 @@ public class CucumberConnectionBuilder
 
     private var _port : uint;
 
+    private var _portRangeLast : uint;
+
     private var _server : ServerSocket;
 
     private var _cucumberConnection : CucumberConnection;
 
-    public function build(port:uint) : ICucumberConnection
+    private var _currentPortAttempt : uint;
+
+    public function build(port:uint, portRangeLast:uint) : ICucumberConnection
     {
         if(_server)
         {
@@ -28,17 +32,40 @@ public class CucumberConnectionBuilder
         }
 
         this._port = port;
+        this._portRangeLast = portRangeLast;
 
-        _server = new ServerSocket();
-        _server.addEventListener(ServerSocketConnectEvent.CONNECT, onServerSocketConnect);
-        _server.addEventListener(Event.CLOSE, onServerSocketClose);
-        _server.bind( _port );
-        _server.listen();
-
-        trace("cucumber socket server starts listening");
+        _currentPortAttempt = _port;
+        while(_server == null)
+        {
+            createServerSocket();
+        }
 
         _cucumberConnection = new CucumberConnection();
         return _cucumberConnection;
+    }
+
+    private function createServerSocket() : void
+    {
+        trace("creating server socket at " + _currentPortAttempt);
+        var server : ServerSocket = new ServerSocket();
+        try
+        {
+            server.bind( _currentPortAttempt );
+            server.listen();
+            server.addEventListener(ServerSocketConnectEvent.CONNECT, onServerSocketConnect);
+            server.addEventListener(Event.CLOSE, onServerSocketClose);
+            _server = server;
+        }
+        catch(error:Error)
+        {
+            trace("creating server failed at " + _currentPortAttempt);
+            _currentPortAttempt++;
+            if(_currentPortAttempt > _portRangeLast)
+            {
+                throw new Error("Unable to create server socket within the range: " + error.message);
+            }
+
+        }
     }
 
     private function onServerSocketConnect(event:ServerSocketConnectEvent):void
@@ -62,8 +89,14 @@ public class CucumberConnectionBuilder
 
     public function destroy() : void
     {
+        if(_cucumberConnection)
+        {
+            _cucumberConnection.destroy();
+        }
+
         if( _server != null )
         {
+            trace("server listening" + _server.listening);
             if( _server.listening )
             {
                 _server.close();
@@ -73,10 +106,7 @@ public class CucumberConnectionBuilder
             _server.removeEventListener(Event.CLOSE, onServerSocketClose);
             _server = null;
         }
-        if(_cucumberConnection)
-        {
-            _cucumberConnection.destroy();
-        }
+
     }
 
 }

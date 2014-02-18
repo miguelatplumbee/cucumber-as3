@@ -14,6 +14,8 @@ public interface ICucumberConnection extends IEventDispatcher
 
     function send(data:Array) : void;
 
+    function destroy() : void;
+
 
 }
 }

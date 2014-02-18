@@ -13,5 +13,7 @@ public class TestRunnerParameters
 
     public var cucumberPort : uint;
 
+    public var portRangeLast : uint;
+
 }
 }

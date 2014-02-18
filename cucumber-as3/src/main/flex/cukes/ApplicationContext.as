@@ -13,6 +13,11 @@ import com.flashquartermaster.cuke4as3.reflection.StepsProcessor;
 import cukes.cucumber.CucumberConnectionBuilder;
 import cukes.error.ErrorHandler;
 
+import flash.desktop.NativeApplication;
+
+import flash.display.Stage;
+import flash.events.Event;
+
 public class ApplicationContext
 {
     public const loggingConfig : LoggingConfig = new LoggingConfig();
@@ -35,10 +40,18 @@ public class ApplicationContext
 
     public const stepMatcher : StepMatcher = new StepMatcher(stepInvoker);
 
-    public function ApplicationContext()
+    public function ApplicationContext(stage:Stage)
     {
+        trace("Creating cukes runner");
         resolveMain();
         resolveCommandProcessor();
+        NativeApplication.nativeApplication.addEventListener(Event.EXITING, onCloseApp);
+    }
+
+    private function onCloseApp(event:Event) : void
+    {
+        trace("Closing Socket and Socket Server");
+        cucumberConnectionBuilder.destroy();
     }
 
     private function resolveMain() : void
