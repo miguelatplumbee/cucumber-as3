@@ -4,7 +4,7 @@
 
 	<groupId>cukes</groupId>
 	<artifactId>cucumber-as3-parent</artifactId>
-	<version>0.2-SNAPSHOT</version>
+	<version>0.3</version>
 	<packaging>pom</packaging>
 
     <properties>

@@ -5,12 +5,12 @@
     <parent>
         <groupId>cukes</groupId>
         <artifactId>cucumber-as3-examples-parent</artifactId>
-        <version>0.2-SNAPSHOT</version>
+        <version>0.3</version>
     </parent>
 
     <groupId>cukes</groupId>
     <artifactId>cucumber-as3-examples-parsley</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.3</version>
     <packaging>swf</packaging>
 
     <build>
