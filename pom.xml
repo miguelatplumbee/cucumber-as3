@@ -22,7 +22,6 @@
     </properties>
 
 	<modules>
-        <module>cucumber-as3-lib</module>
         <module>cucumber-as3</module>
         <module>cucumber-as3-bundle</module>
         <module>cucumber-as3-examples</module>

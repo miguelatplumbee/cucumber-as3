@@ -62,7 +62,7 @@
                             <goal>exec</goal>
                         </goals>
                         <configuration>
-                            <skip>${maven.test.skip}</skip>
+                            <skip>true</skip>
                             <executable>sh</executable>
                             <workingDirectory>${project.build.directory}</workingDirectory>
                             <arguments>
